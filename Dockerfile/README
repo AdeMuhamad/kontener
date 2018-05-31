@@ -1,0 +1,22 @@
+
+
+# Dockerfile nginx-php7  
+
+# This in command after build 
+
+- run container
+`docker run -di --privileged=true --hostname apps --name apps -p 80:80 --volume /var/www:/var/www--volume /sys/fs/cgroup:/sys/fs/cgroup:ro image_name /sbin/init`
+
+- login into container
+`docker exec -ti container_name /bin/bash`
+
+- start nginx
+`systemctl start nginx`
+
+- start php
+`systemctl start php72-php-fpm`
+
+adjust directory your apps in docker run volume
+
+TODO 
+tunning conf php
