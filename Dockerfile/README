@@ -1,11 +1,9 @@
-
-
-# Dockerfile nginx-php7  
-
 # This in command after build 
+- extrak file ojs
+`tar -xzvf ojs-3.1.1-2.tar.gz`
 
 - run container
-`docker run -di --privileged=true --hostname apps --name apps -p 80:80 --volume /var/www:/var/www--volume /sys/fs/cgroup:/sys/fs/cgroup:ro image_name /sbin/init`
+`docker run -di --privileged=true --hostname ojs12 --name ojs12 -p 80:80 --volume /sys/fs/cgroup:/sys/fs/cgroup:ro 1377ae6be1f7 /sbin/init`
 
 - login into container
 `docker exec -ti container_name /bin/bash`
@@ -16,7 +14,8 @@
 - start php
 `systemctl start php72-php-fpm`
 
-adjust directory your apps in docker run volume
+- chown php socket
+`chown apache:apache /var/run/www.sock`
 
 TODO 
 tunning conf php
