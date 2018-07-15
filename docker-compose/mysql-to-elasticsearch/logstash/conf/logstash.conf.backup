@@ -1,0 +1,17 @@
+input {
+  syslog {
+    host => "logstash"
+    port => 5140
+  }
+}
+
+
+output {
+  elasticsearch {
+    hosts => ["http://elasticsearch:9200"]
+    manage_template => true
+    template_overwrite => true
+    template => "/etc/logstash/es_template.json"
+    index => "payment-service-prod"
+  }
+}
